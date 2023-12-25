@@ -173,7 +173,7 @@ async fn create_project(year: u32, day: u32, template: &Path, output: &Path) -> 
         println!("Change name in '{cargo_toml_str}'");
         fs::write(
             cargo_toml,
-            content.replace(r#"name = "template""#, &format!(r#"name = "day_{day}""#)),
+            content.replace(r#"name = "template""#, &format!(r#"name = "day_{day:0>2}""#)),
         )
         .await
         .context(format!("Failed to update '{cargo_toml_str}'"))?;
