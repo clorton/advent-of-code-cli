@@ -49,7 +49,7 @@ async fn main() -> Result<()> {
             template,
         } => {
             let year = year.unwrap_or_else(get_default_year);
-            let output = output.unwrap_or_else(|| format!("./day_{day}").into());
+            let output = output.unwrap_or_else(|| format!("./day_{day:0>2}").into());
             create_project(year, day, &template, &output).await?;
             env::set_current_dir(&output)?;
             let (problem, _) = try_join!(
